@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/viking.mp3-0457925a630e486b707e05e1d1fc3ead.mp3str"
+
+[deps]
+
+source_file="res://sound/viking.mp3"
+dest_files=[ "res://.import/viking.mp3-0457925a630e486b707e05e1d1fc3ead.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

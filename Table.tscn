@@ -1,0 +1,682 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://Table.gd" type="Script" id=1]
+[ext_resource path="res://graphics/P1.png" type="Texture" id=2]
+[ext_resource path="res://Bumper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Light.tscn" type="PackedScene" id=4]
+[ext_resource path="res://graphics/rune circle.png" type="Texture" id=5]
+[ext_resource path="res://Flipper.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Plunger.tscn" type="PackedScene" id=7]
+[ext_resource path="res://DropTarget.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Kicker.tscn" type="PackedScene" id=9]
+[ext_resource path="res://graphics/dmd-moire.png" type="Texture" id=10]
+[ext_resource path="res://DMD.gd" type="Script" id=11]
+[ext_resource path="res://graphics/wood_Reborn.png" type="Texture" id=12]
+[ext_resource path="res://graphics/P2.png" type="Texture" id=13]
+[ext_resource path="res://graphics/P3.png" type="Texture" id=14]
+[ext_resource path="res://graphics/new-BG.png" type="Texture" id=15]
+[ext_resource path="res://Gate.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Rollover.tscn" type="PackedScene" id=17]
+[ext_resource path="res://graphics/headbumper.png" type="Texture" id=18]
+[ext_resource path="res://graphics/victory-lane-hunt-light.png" type="Texture" id=19]
+[ext_resource path="res://graphics/victory-target-hunt-light.png" type="Texture" id=20]
+[ext_resource path="res://graphics/victory-multiball-light.png" type="Texture" id=21]
+[ext_resource path="res://graphics/victory-bumpers-light.png" type="Texture" id=22]
+[ext_resource path="res://graphics/arrow_n.png" type="Texture" id=23]
+[ext_resource path="res://graphics/x2-light.png" type="Texture" id=24]
+[ext_resource path="res://graphics/x4-light.png" type="Texture" id=25]
+[ext_resource path="res://graphics/x8-light.png" type="Texture" id=26]
+[ext_resource path="res://AudioStreamPlayer.gd" type="Script" id=27]
+[ext_resource path="res://graphics/spear.png" type="Texture" id=28]
+[ext_resource path="res://Toy.gd" type="Script" id=29]
+[ext_resource path="res://graphics/toy-gate.png" type="Texture" id=30]
+[ext_resource path="res://graphics/PinballShield__1_-removebg-preview.png" type="Texture" id=31]
+[ext_resource path="res://Rubberband.tscn" type="PackedScene" id=32]
+[ext_resource path="res://graphics/toy-light.png" type="Texture" id=33]
+[ext_resource path="res://sound/toy.wav" type="AudioStream" id=34]
+[ext_resource path="res://graphics/Duel of Fate.png" type="Texture" id=35]
+[ext_resource path="res://Instructions.gd" type="Script" id=36]
+[ext_resource path="res://Needle.tscn" type="PackedScene" id=37]
+[ext_resource path="res://sound/viking.mp3" type="AudioStream" id=38]
+[ext_resource path="res://graphics/loop-light.png" type="Texture" id=39]
+[ext_resource path="res://graphics/window-light.png" type="Texture" id=40]
+[ext_resource path="res://graphics/Arrow.png" type="Texture" id=41]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.28
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -150, 0 )
+b = Vector2( 150, 0 )
+
+[node name="Table" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="Walls" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+mode = 1
+physics_material_override = SubResource( 1 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, -1 )
+polygon = PoolVector2Array( 362, 385, 324, 394, 268, 414, 222, 445, 184, 489, 154, 539, 142.967, 584.155, 138.367, 622.622, 138.367, 665.688, 200.249, 1012.73, 196.904, 1022.76, 189.378, 1032.8, 178.089, 1034.05, 171.817, 1029.45, 80.2485, 725.061, 79.4122, 681.995, 81.5029, 657.326, 87.3565, 633.493, 94.0465, 607.151, 110.205, 571.557, 127, 527, 151, 484, 190, 447, 232, 415, 272, 388, 332, 368, 390, 360, 465, 362, 520, 370, 562, 380, 591, 388, 637, 409, 667, 430, 688.946, 466.932, 701.78, 494.139, 708.375, 522.607, 710.883, 557.311, 705.03, 598.287, 698.097, 638.959, 681.516, 688.702, 628, 804, 560, 775, 568.41, 767.53, 584, 775, 690.738, 615.389, 672.791, 604.996, 675.985, 597.255, 678.751, 578.506, 673.526, 561.909, 670, 538, 638, 505, 577, 476, 517, 461, 509.95, 436.313, 501, 401, 467, 385, 415, 379 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Walls"]
+rotation = -0.0019991
+polygon = PoolVector2Array( 304.066, 467.609, 344, 456, 391.116, 442.783, 428.122, 439.857, 432, 448, 436.914, 457.853, 416, 440, 432, 456, 424, 464, 408, 464, 368, 472, 332.038, 481.665, 283.988, 506.569, 255.922, 539.513, 250, 572, 257.718, 595.788, 280, 632, 328, 704, 363.775, 766.194, 372.991, 779.857, 408.915, 800.214, 524.334, 834.05, 570.553, 850.856, 608.998, 871.654, 568.032, 976.906, 503.292, 855.008, 360, 848, 300.176, 977.536, 220.765, 655.479, 218, 603, 218.864, 568.439, 236.95, 525.475, 266.024, 488.533 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 13.4211, 23.9103 )
+polygon = PoolVector2Array( 247.579, 1996.09, 245.579, 1862.09, 17.5789, 1681.09, 17.9857, 1327.66, 90.5789, 1107.09, 17.7013, 785.72, 2.57887, 685.09, 0.242749, 630.688, 5.82948, 590.882, 16.5789, 544.09, 46.8822, 485.049, 74.5789, 432.09, 114.579, 384.09, 146.579, 360.09, 154.579, 312.09, 170.579, 288.09, 194.579, 264.09, 226.579, 232.09, 274.579, 216.09, 306.579, 208.09, 354.579, 200.09, 402.579, 192.09, 450.579, 192.09, 506.579, 192.09, 562.579, 200.09, 610.579, 208.09, 658.579, 224.09, 714.579, 248.09, 760.579, 281.09, 802.579, 325.09, 828.579, 368.09, 844.579, 420.09, 846.579, 490.09, 845.579, 1990.09, 881.579, 1992.09, 882.579, 184.09, 410.579, 184.09, -13.4211, 192.09, -12.8758, 1991.94 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 46.895, 0 )
+rotation = 0.00309275
+polygon = PoolVector2Array( 692.077, 363.904, 716.091, 384.628, 738.241, 414.182, 754.664, 450.206, 755.031, 621.668, 757.002, 935.663, 759.336, 2013.66, 508.904, 2014.25, 504.96, 1892.45, 741.127, 1693.84, 739.072, 1361.55, 696.87, 1169.17, 746.138, 979.697, 676.052, 951.914, 626.458, 1083.07, 605.439, 1077.13, 718.443, 640.972, 724.854, 614.724, 731.889, 575.739, 732.171, 540.422, 728.091, 505.479, 716.868, 472.942, 705.499, 449.82, 691.641, 426.931, 671.407, 405.565 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, 1 )
+polygon = PoolVector2Array( 101.876, 1545.93, 104.775, 1536.71, 110.566, 1527.67, 121.369, 1524.17, 135.871, 1527.49, 149.035, 1544.49, 122.627, 1555.49, 196.095, 1724.55, 221.216, 1720.1, 224.297, 1732.42, 223.417, 1741.66, 213.294, 1748.7, 196.569, 1748.7, 180.284, 1740.34, 102.822, 1682.25 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 667.067, 1536.24, 675.869, 1527.88, 688.47, 1525.32, 700.076, 1529.2, 705.862, 1537.45, 708.234, 1546.14, 708.879, 1684.57, 622.174, 1747.06, 609.85, 1750.59, 596.206, 1749.7, 588.284, 1741.78, 585.643, 1728.14, 592.685, 1714.05, 614.691, 1728.58, 692.154, 1549.89 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 18.451, -37.5515 )
+scale = Vector2( 0.968876, 1.06854 )
+polygon = PoolVector2Array( 229.857, 358.48, 236.923, 342.103, 258.219, 328.858, 282.169, 318.143, 319.493, 312.156, 352.521, 304.669, 385.549, 297.183, 426.834, 297.183, 459.862, 297.183, 492.89, 297.182, 492.89, 319.642, 440.993, 315.622, 401.287, 316.883, 362.211, 320.664, 322.505, 327.597, 286.58, 337.051, 258.219, 347.135 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 578, 296, 575, 319, 593, 320, 596, 296 )
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 656, 315, 675, 321, 662, 357, 644, 345 )
+
+[node name="Sprite" type="Sprite" parent="Walls"]
+position = Vector2( 451.041, 1111.5 )
+scale = Vector2( 0.970237, 0.975175 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bumper1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 384, 576 )
+
+[node name="Light" parent="Bumper1" instance=ExtResource( 4 )]
+position = Vector2( -0.395244, -0.0661914 )
+scale = Vector2( 0.31288, 0.300368 )
+texture = ExtResource( 5 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="Bumper2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 464, 704 )
+
+[node name="Light" parent="Bumper2" instance=ExtResource( 4 )]
+position = Vector2( 0.937505, 0.125032 )
+scale = Vector2( 0.325184, 0.315972 )
+texture = ExtResource( 5 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="Bumper3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 536, 576 )
+
+[node name="Light" parent="Bumper3" instance=ExtResource( 4 )]
+position = Vector2( -0.15624, -0.312522 )
+scale = Vector2( 0.318496, 0.301736 )
+texture = ExtResource( 5 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="LFlipper" parent="." instance=ExtResource( 6 )]
+position = Vector2( 241, 1887 )
+rotation = 0.617245
+z_index = 1
+keycode = "ui_left_flip"
+snap_time = 0.05
+snap_angle = -47
+
+[node name="RFlipper" parent="." instance=ExtResource( 6 )]
+position = Vector2( 578, 1880 )
+rotation = 2.42348
+z_index = 1
+keycode = "ui_right_flip"
+snap_time = 0.05
+snap_angle = 47
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2( 401.177, 2012.74 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+shape = SubResource( 2 )
+
+[node name="Plunger" parent="." instance=ExtResource( 7 )]
+position = Vector2( 837, 1887 )
+full_extension = 60
+pull_time = 0.75
+release_time = 0.03
+
+[node name="DropTarget1" parent="." instance=ExtResource( 8 )]
+position = Vector2( 57.3714, 1322.9 )
+rotation = -1.28063
+
+[node name="DropTarget2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 73.0117, 1270.1 )
+rotation = -1.28364
+
+[node name="DropTarget3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 88.6209, 1217.37 )
+rotation = -1.29007
+
+[node name="DropTarget4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 731.705, 1225.22 )
+rotation = 1.31065
+
+[node name="DropTarget5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 745.044, 1279.27 )
+rotation = 1.29554
+
+[node name="DropTarget6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 759.37, 1333.49 )
+rotation = 1.32235
+
+[node name="LKicker" parent="." instance=ExtResource( 9 )]
+position = Vector2( 172, 1650 )
+rotation = -0.393051
+scale = Vector2( 0.985002, -1.12865 )
+
+[node name="RKicker" parent="." instance=ExtResource( 9 )]
+position = Vector2( 640, 1647 )
+rotation = -2.754
+scale = Vector2( -0.687233, 1.10111 )
+
+[node name="DMDMoire" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 1 )
+scale = Vector2( 1, 0.924107 )
+z_index = 10
+texture = ExtResource( 10 )
+offset = Vector2( 448, 112 )
+region_enabled = true
+region_rect = Rect2( -448, -112, 896, 224 )
+
+[node name="DMD" type="Node2D" parent="."]
+pause_mode = 1
+position = Vector2( 450, 99 )
+scale = Vector2( 7, 7 )
+z_index = 5
+script = ExtResource( 11 )
+
+[node name="DMDTimer" type="Timer" parent="DMD"]
+
+[node name="SaveLight" parent="." instance=ExtResource( 4 )]
+position = Vector2( 406.144, 1789.85 )
+scale = Vector2( 0.976647, 0.955688 )
+texture = ExtResource( 12 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="SpecialLight1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 735, 1046 )
+rotation = 0.332657
+scale = Vector2( 0.209277, 0.217495 )
+texture = ExtResource( 2 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="SpecialLight2" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 734, 1043 )
+rotation = 0.329934
+scale = Vector2( 0.226467, 0.156523 )
+texture = ExtResource( 13 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="SpecialLight3" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 718, 1090 )
+rotation = 0.332302
+scale = Vector2( 0.189785, 0.179085 )
+texture = ExtResource( 14 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="EntryGate1" parent="." instance=ExtResource( 16 )]
+position = Vector2( 199.209, 375.969 )
+rotation = 2.61917
+
+[node name="EntryGate2" parent="." instance=ExtResource( 16 )]
+position = Vector2( 537.891, 322.178 )
+rotation = 3.28975
+
+[node name="EntryGate3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 618.378, 345.196 )
+rotation = 3.53534
+
+[node name="EntryGate4" parent="." instance=ExtResource( 16 )]
+position = Vector2( 692.202, 386.801 )
+rotation = 3.80092
+
+[node name="Lane1Rollover" parent="." instance=ExtResource( 17 )]
+position = Vector2( 397.191, 345.404 )
+rotation = 1.47714
+
+[node name="Lane2Rollover" parent="." instance=ExtResource( 17 )]
+position = Vector2( 364.847, 432.891 )
+rotation = 1.36104
+
+[node name="Lane3Rollover" parent="." instance=ExtResource( 17 )]
+position = Vector2( 321.454, 357.922 )
+rotation = -1.90656
+
+[node name="Lane4Rollover" parent="." instance=ExtResource( 17 )]
+position = Vector2( 66.5405, 1580.75 )
+rotation = 3.14159
+
+[node name="Lane5Rollover" parent="." instance=ExtResource( 17 )]
+position = Vector2( 747.092, 1580.73 )
+rotation = 3.14159
+
+[node name="BallCaptureRight" parent="." instance=ExtResource( 17 )]
+position = Vector2( 754.911, 979.498 )
+rotation = 0.334455
+
+[node name="ResetLeftTargets" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 0.5
+one_shot = true
+
+[node name="ResetRightTargets" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 0.5
+one_shot = true
+
+[node name="BallReleaseRightTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 2.0
+one_shot = true
+
+[node name="BallEjectTimer" type="Timer" parent="."]
+pause_mode = 1
+one_shot = true
+
+[node name="WizardModeTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 30.0
+one_shot = true
+
+[node name="BallSaveTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 15.0
+one_shot = true
+
+[node name="NudgeLeftTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 0.1
+one_shot = true
+
+[node name="NudgeRightTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 0.1
+one_shot = true
+
+[node name="NudgeUpTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 0.1
+one_shot = true
+
+[node name="GameOverTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 3.0
+one_shot = true
+
+[node name="BallLostTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 9.0
+one_shot = true
+
+[node name="SkillShotTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 15.0
+one_shot = true
+
+[node name="WindowTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 10.0
+autostart = true
+
+[node name="WizardReadyTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 10.0
+
+[node name="ZapTimer" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 0.5
+one_shot = true
+
+[node name="CountdownTimer" type="Timer" parent="."]
+pause_mode = 1
+one_shot = true
+
+[node name="LaneLight1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 117.935, 998.914 )
+rotation = -0.19568
+scale = Vector2( 0.503505, 0.340636 )
+texture = ExtResource( 41 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="LaneLight2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 242.529, 947.947 )
+rotation = 6.08697
+scale = Vector2( 0.511189, 0.370209 )
+texture = ExtResource( 41 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="LaneLight3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 681.193, 797.92 )
+rotation = 0.277648
+scale = Vector2( 0.353749, 0.348363 )
+texture = ExtResource( 41 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="LaneLight4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 66.6574, 1615.9 )
+rotation = 3.11867
+scale = Vector2( 0.43062, 0.296699 )
+texture = ExtResource( 41 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="LaneLight5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 747.272, 1615.87 )
+rotation = 3.11825
+scale = Vector2( 0.43332, 0.296412 )
+texture = ExtResource( 41 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="LaneHuntVictoryLight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 337.008, 1376.51 )
+rotation = 0.193108
+texture = ExtResource( 19 )
+
+[node name="TargetHuntVictoryLight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 213.858, 1403.01 )
+texture = ExtResource( 20 )
+
+[node name="MultiballVictoryLight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 462.856, 1375.73 )
+rotation = 0.393895
+texture = ExtResource( 21 )
+
+[node name="BumperVictoryLight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 587.482, 1400.97 )
+rotation = 0.594814
+texture = ExtResource( 22 )
+
+[node name="LeftTargetLight" parent="." instance=ExtResource( 4 )]
+position = Vector2( 148, 1305 )
+rotation = 0.347081
+scale = Vector2( 0.334192, 0.294082 )
+texture = ExtResource( 18 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="RightTargetLight" parent="." instance=ExtResource( 4 )]
+position = Vector2( 668, 1306 )
+rotation = -0.2846
+scale = Vector2( 0.310277, 0.26859 )
+texture = ExtResource( 18 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="X2Light" parent="." instance=ExtResource( 4 )]
+position = Vector2( 315.517, 1614.48 )
+rotation = -0.294188
+scale = Vector2( 0.273756, 0.340198 )
+texture = ExtResource( 24 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="X4Light" parent="." instance=ExtResource( 4 )]
+position = Vector2( 417.293, 1601.32 )
+scale = Vector2( 0.317694, 0.304461 )
+texture = ExtResource( 25 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="X8Light" parent="." instance=ExtResource( 4 )]
+position = Vector2( 518, 1616 )
+rotation = 0.308002
+scale = Vector2( 0.253329, 0.287861 )
+texture = ExtResource( 26 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
+script = ExtResource( 27 )
+
+[node name="LeftKickerLight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 171, 1654 )
+rotation = 0.479231
+scale = Vector2( -0.273471, 0.281554 )
+texture = ExtResource( 28 )
+off_light = Color( 1, 1, 1, 0.607843 )
+
+[node name="RightKickerLight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 624, 1632 )
+rotation = 1.34203
+scale = Vector2( -0.295002, 0.285047 )
+texture = ExtResource( 28 )
+off_light = Color( 1, 1, 1, 0.607843 )
+
+[node name="BumperGate" parent="." instance=ExtResource( 16 )]
+position = Vector2( 477.528, 467.107 )
+rotation = -3.14244
+
+[node name="Toy" type="RigidBody2D" parent="."]
+pause_mode = 1
+position = Vector2( 433.266, 982.927 )
+z_index = 10
+mode = 3
+script = ExtResource( 29 )
+
+[node name="ToyGate1" parent="Toy" instance=ExtResource( 16 )]
+visible = false
+position = Vector2( -0.875977, 105.198 )
+rotation = -3.1355
+
+[node name="Sprite" type="Sprite" parent="Toy/ToyGate1"]
+visible = false
+position = Vector2( -1.08533, 27.8723 )
+texture = ExtResource( 30 )
+
+[node name="ToyGate2" parent="Toy" instance=ExtResource( 16 )]
+visible = false
+position = Vector2( -90.8888, -53.5332 )
+rotation = -1.07181
+
+[node name="Sprite" type="Sprite" parent="Toy/ToyGate2"]
+visible = false
+position = Vector2( 0.281067, 28.466 )
+texture = ExtResource( 30 )
+
+[node name="ToyGate3" parent="Toy" instance=ExtResource( 16 )]
+visible = false
+position = Vector2( 90.8636, -52.4578 )
+rotation = 1.0348
+
+[node name="Sprite" type="Sprite" parent="Toy/ToyGate3"]
+visible = false
+position = Vector2( -2.78833, 27.7445 )
+texture = ExtResource( 30 )
+
+[node name="ToySprite" type="Sprite" parent="Toy"]
+position = Vector2( -0.265991, 0.072998 )
+scale = Vector2( 0.686395, 0.682264 )
+texture = ExtResource( 31 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Toy"]
+polygon = PoolVector2Array( -62.3261, -107.268, -77.413, -82.4681, 0.971741, -36.1912, 77.6479, -80.5264, 62.6045, -107.505, 47.0497, -107.346, 46.549, -87.0685, -46.0785, -87.0685, -47.0809, -107.155 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Toy"]
+polygon = PoolVector2Array( -108.383, -26.4852, -31.0042, 15.3159, -32.4759, 106.989, -62.1208, 107.785, -69.6109, 95.4767, -52.8378, 84.9622, -100.153, 3.85052, -116.607, 13.0426, -124.484, -0.654297 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Toy"]
+polygon = PoolVector2Array( 31.0464, 17.6697, 109.27, -24.771, 124.57, -0.25708, 116.896, 13.1133, 99.1213, 3.60022, 53.0579, 84.2112, 69.831, 95.2263, 61.8663, 107.623, 31.4536, 107.43 )
+
+[node name="ToyRollover1" parent="Toy" instance=ExtResource( 17 )]
+position = Vector2( 0.725436, 41.8353 )
+
+[node name="ToyRollover2" parent="Toy" instance=ExtResource( 17 )]
+position = Vector2( -36.3636, -22.2915 )
+rotation = 2.0944
+
+[node name="ToyRollover3" parent="Toy" instance=ExtResource( 17 )]
+position = Vector2( 36.7086, -19.9957 )
+rotation = 4.18879
+
+[node name="Rubberband1" parent="Toy" instance=ExtResource( 32 )]
+position = Vector2( -83.6762, 50.5785 )
+rotation = -0.51919
+
+[node name="Rubberband2" parent="Toy" instance=ExtResource( 32 )]
+position = Vector2( 85.0278, 48.4855 )
+rotation = 0.528317
+
+[node name="Rubberband3" parent="Toy" instance=ExtResource( 32 )]
+position = Vector2( 0.664673, -97.4904 )
+rotation = 1.57358
+
+[node name="Light" parent="Toy" instance=ExtResource( 4 )]
+position = Vector2( 0, -17 )
+texture = ExtResource( 33 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Toy"]
+stream = ExtResource( 34 )
+
+[node name="Rubberband1" parent="." instance=ExtResource( 32 )]
+position = Vector2( 281, 638 )
+rotation = -0.530251
+
+[node name="Rubberband2" parent="." instance=ExtResource( 32 )]
+position = Vector2( 334, 726 )
+rotation = -0.574914
+
+[node name="Rubberband3" parent="." instance=ExtResource( 32 )]
+position = Vector2( 602, 733 )
+rotation = 0.660002
+
+[node name="Rubberband4" parent="." instance=ExtResource( 32 )]
+position = Vector2( 657, 649 )
+rotation = 0.47769
+
+[node name="Instructions" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1414, 1045 )
+z_index = 50
+texture = ExtResource( 35 )
+script = ExtResource( 36 )
+
+[node name="LeftNeedle" parent="." instance=ExtResource( 37 )]
+visible = false
+position = Vector2( 127.618, 1978.87 )
+
+[node name="RightNeedle" parent="." instance=ExtResource( 37 )]
+visible = false
+position = Vector2( 681.153, 1979.19 )
+
+[node name="SkillLight1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 543, 299 )
+rotation = -2.99835
+scale = Vector2( 0.127185, 0.145941 )
+texture = ExtResource( 23 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="SkillLight2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 629, 316 )
+rotation = -2.80592
+scale = Vector2( 0.101185, 0.168552 )
+texture = ExtResource( 23 )
+off_light = Color( 1, 1, 1, 0.74902 )
+
+[node name="SkillLight3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 706, 356 )
+rotation = -2.55387
+scale = Vector2( 0.118596, 0.175854 )
+texture = ExtResource( 23 )
+off_light = Color( 1, 1, 1, 0.745098 )
+
+[node name="SkillRollover1" parent="." instance=ExtResource( 17 )]
+position = Vector2( 540.935, 306.602 )
+rotation = -3.02082
+
+[node name="SkillRollover2" parent="." instance=ExtResource( 17 )]
+position = Vector2( 626.367, 324.057 )
+rotation = 3.49737
+
+[node name="SkillRollover3" parent="." instance=ExtResource( 17 )]
+position = Vector2( 699, 363 )
+rotation = 3.73256
+
+[node name="NoSkillRollover" parent="." instance=ExtResource( 17 )]
+position = Vector2( 207.867, 340.564 )
+rotation = -3.02082
+
+[node name="LoopLight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 387, 332 )
+texture = ExtResource( 39 )
+
+[node name="WindowLight" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 89.6209, 327.201 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 40 )
+off_light = Color( 1, 1, 1, 0 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )
+volume_db = -21.273
+autoplay = true
+
+[connection signal="body_entered" from="Bumper1" to="." method="_on_Bumper1_body_entered"]
+[connection signal="body_entered" from="Bumper2" to="." method="_on_Bumper2_body_entered"]
+[connection signal="body_entered" from="Bumper3" to="." method="_on_Bumper3_body_entered"]
+[connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
+[connection signal="body_entered" from="DropTarget1" to="." method="_on_DropTarget1_body_entered"]
+[connection signal="body_entered" from="DropTarget2" to="." method="_on_DropTarget2_body_entered"]
+[connection signal="body_entered" from="DropTarget3" to="." method="_on_DropTarget3_body_entered"]
+[connection signal="body_entered" from="DropTarget4" to="." method="_on_DropTarget4_body_entered"]
+[connection signal="body_entered" from="DropTarget5" to="." method="_on_DropTarget5_body_entered"]
+[connection signal="body_entered" from="DropTarget6" to="." method="_on_DropTarget6_body_entered"]
+[connection signal="body_entered" from="LKicker" to="." method="_on_LKicker_body_entered"]
+[connection signal="body_entered" from="RKicker" to="." method="_on_RKicker_body_entered"]
+[connection signal="timeout" from="DMD/DMDTimer" to="DMD" method="_on_DMDTimer_timeout"]
+[connection signal="rollover_entered" from="Lane1Rollover" to="." method="_on_Lane1Rollover_rollover_entered"]
+[connection signal="rollover_entered" from="Lane2Rollover" to="." method="_on_Lane2Rollover_rollover_entered"]
+[connection signal="rollover_entered" from="Lane3Rollover" to="." method="_on_Lane3Rollover_rollover_entered"]
+[connection signal="rollover_entered" from="Lane4Rollover" to="." method="_on_Lane4Rollover_rollover_entered"]
+[connection signal="rollover_entered" from="Lane5Rollover" to="." method="_on_Lane5Rollover_rollover_entered"]
+[connection signal="rollover_entered" from="BallCaptureRight" to="." method="_on_BallCaptureRight_rollover_entered"]
+[connection signal="timeout" from="ResetLeftTargets" to="." method="_on_ResetLeftTargets_timeout"]
+[connection signal="timeout" from="ResetRightTargets" to="." method="_on_ResetRightTargets_timeout"]
+[connection signal="timeout" from="BallReleaseRightTimer" to="." method="_on_BallReleaseRightTimer_timeout"]
+[connection signal="timeout" from="BallEjectTimer" to="." method="_on_BallEjectTimer_timeout"]
+[connection signal="timeout" from="WizardModeTimer" to="." method="_on_WizardModeTimer_timeout"]
+[connection signal="timeout" from="BallSaveTimer" to="." method="_on_BallSaveTimer_timeout"]
+[connection signal="timeout" from="NudgeLeftTimer" to="." method="_on_NudgeLeftTimer_timeout"]
+[connection signal="timeout" from="NudgeRightTimer" to="." method="_on_NudgeRightTimer_timeout"]
+[connection signal="timeout" from="NudgeUpTimer" to="." method="_on_NudgeUpTimer_timeout"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
+[connection signal="timeout" from="BallLostTimer" to="." method="_on_BallLostTimer_timeout"]
+[connection signal="timeout" from="SkillShotTimer" to="." method="_on_SkillShotTimer_timeout"]
+[connection signal="timeout" from="WindowTimer" to="." method="_on_WindowTimer_timeout"]
+[connection signal="timeout" from="WizardReadyTimer" to="." method="_on_WizardReadyTimer_timeout"]
+[connection signal="timeout" from="ZapTimer" to="." method="_on_ZapTimer_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_CountdownTimer_timeout"]
+[connection signal="rollover_entered" from="Toy/ToyRollover1" to="." method="_on_ToyRollover1_rollover_entered"]
+[connection signal="rollover_entered" from="Toy/ToyRollover2" to="." method="_on_ToyRollover2_rollover_entered"]
+[connection signal="rollover_entered" from="Toy/ToyRollover3" to="." method="_on_ToyRollover3_rollover_entered"]
+[connection signal="rollover_entered" from="SkillRollover1" to="." method="_on_SkillRollover1_rollover_entered"]
+[connection signal="rollover_entered" from="SkillRollover2" to="." method="_on_SkillRollover2_rollover_entered"]
+[connection signal="rollover_entered" from="SkillRollover3" to="." method="_on_SkillRollover3_rollover_entered"]
+[connection signal="rollover_entered" from="NoSkillRollover" to="." method="_on_NoSkillRollover_rollover_entered"]
